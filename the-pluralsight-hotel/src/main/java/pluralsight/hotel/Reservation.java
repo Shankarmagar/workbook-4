@@ -41,12 +41,17 @@ public class Reservation {
 
     public double getPrice(RoomType roomType)
     {
-        double rateForPrice = 124.00;
+        double rateForPrice = 0.00;
         if(roomType == RoomType.King)
         {
             rateForPrice = 139.00;
 
         }
+        if(roomType == RoomType.Double)
+        {
+            rateForPrice = 124.00;
+        }
+
         return rateForPrice;
 
     }
@@ -64,16 +69,19 @@ public class Reservation {
     }
 
     public boolean isWeekend() {
+
+
         int numberOfWeekends = 0;
         LocalDate currentDate = start;
 
+        //https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html
         while (!currentDate.isAfter(end)) {
             if (currentDate.getDayOfWeek().toString().equals("Saturday") || currentDate.getDayOfWeek().toString().equals("Sunday")) {
                 numberOfWeekends++;
             }
             currentDate = currentDate.plusDays(1);
         }
-        if (numberOfWeekends>0)
+        if(numberOfWeekends>0)
         {
             return true;
         }
@@ -85,5 +93,6 @@ public class Reservation {
     }
 
     public int getGetReservationTotal() {
+        return 0;
     }
 }
